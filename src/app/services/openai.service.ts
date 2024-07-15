@@ -1,8 +1,10 @@
-import { ProsYcosResponse } from './../interfaces/pros-cos.interface';
+
 import { from } from 'rxjs';
 import { orthographyUseCase } from './../core/use-cases/orthography/orthography.use-case';
 import { Injectable } from '@angular/core';
-import { prosConsUseCase } from 'app/core/use-cases/pros-const.use-case';
+import { prosConsUseCase } from 'app/core/use-cases/pros-con/pros-const.use-case';
+import { prosConsUseCaseStream } from 'app/core/use-cases/pros-con/pros-const-stream';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +18,9 @@ export class OpenaiServices {
   ckeckProsYCons(prompt:string){
     return from(prosConsUseCase(prompt));
   }
+
+  ckeckProsYConsstream(prompt:string, abortSignal: AbortSignal){
+    return (prosConsUseCaseStream(prompt, abortSignal));
+  }
+
 }

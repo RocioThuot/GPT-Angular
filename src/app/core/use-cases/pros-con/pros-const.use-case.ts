@@ -14,7 +14,7 @@ export const prosConsUseCase = async (prompt: string) => {
     if (!resp.ok) throw new Error('No se pudo realizar la comparación');
 
     const data = await resp.json() as ProsYcosResponse;
-
+    console.log({gptr:data})
     return {
       ok: true,
       ...data,
